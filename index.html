@@ -448,6 +448,7 @@
       grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
       gap: 32px;
       align-items: center;
+      overflow: hidden;
     }
 
     .about-card,
@@ -469,6 +470,8 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
+      width: 100%;
+      min-width: 0;
     }
 
     .about-card::before {
@@ -485,18 +488,29 @@
     .about-visual {
       margin-top: 20px;
       border-radius: 24px;
-      min-height: 400px;
-      height: 320px;
+      min-height: 380px;
+      height: 380px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
       background: linear-gradient(135deg, #161616, #272727);
       border: 1px solid rgba(255,255,255,0.08);
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .about-visual img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      max-width: 100%;
+      object-fit: cover;
       object-position: center;
+    }
+
+    .about-content {
+      min-width: 0;
     }
 
     .about-content p {
@@ -864,6 +878,15 @@
       .card-media {
         height: 240px;
       }
+
+      .about-card,
+      .about-content {
+        min-width: 0;
+      }
+
+      .about-visual {
+        min-width: 0;
+      }
     }
 
     @media (max-width: 560px) {
@@ -957,7 +980,7 @@
         height: 100%;
         object-fit: contain;
         object-position: center;
-        transform: scale(1);
+        transform: scale(1.05);
       }
 
       .section-title {
@@ -972,13 +995,33 @@
         padding: 20px;
       }
 
+      .about-card {
+        width: 100%;
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      .about-wrap {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
       .about-visual {
-        min-height: 250px;
-        height: 250px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        min-height: 220px;
+        height: 220px;
+        margin-top: 18px;
+        overflow: hidden;
       }
 
       .about-visual img {
-        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: center;
       }
     }
   </style>
