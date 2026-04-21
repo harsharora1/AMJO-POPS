@@ -140,6 +140,7 @@
       font-weight: 800;
       letter-spacing: 0.6px;
       font-size: 20px;
+      flex-shrink: 0;
     }
 
     .brand-badge {
@@ -933,38 +934,74 @@
     }
 
     @media (max-width: 560px) {
-      .section {
-        padding: 68px 0;
+      .navbar {
+        padding: 0;
       }
 
       .nav-wrap {
-        min-height: auto;
-        padding: 10px 0 12px;
+        min-height: 48px;
+        padding: 8px 0;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: nowrap;
       }
 
       .brand {
-        font-size: 18px;
+        width: auto;
+        justify-content: flex-start;
+        gap: 6px;
+        font-size: 12px;
+        letter-spacing: 0.2px;
+        white-space: nowrap;
       }
 
       .brand-badge {
-        width: 36px;
-        height: 36px;
-        font-size: 18px;
+        width: 26px;
+        height: 26px;
+        font-size: 13px;
+        border-radius: 8px;
       }
 
       .nav-links {
-        gap: 10px 12px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        white-space: nowrap;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-links li {
+        flex: 0 0 auto;
       }
 
       .nav-links a {
-        font-size: 13px;
+        font-size: 11px;
+        line-height: 1;
+        padding: 2px 0;
       }
 
-      .nav-cta .btn {
-        width: 100%;
-        max-width: 220px;
-        padding: 10px 16px;
-        font-size: 13px;
+      .nav-links a::after {
+        bottom: -3px;
+        height: 1.5px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .section {
+        padding: 68px 0;
       }
 
       .hero {
