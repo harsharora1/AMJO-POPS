@@ -935,33 +935,34 @@
 
     @media (max-width: 560px) {
       .navbar {
-        padding: 0;
+        background: rgba(8, 8, 10, 0.9);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
       }
 
       .nav-wrap {
-        min-height: 48px;
-        padding: 8px 0;
+        min-height: 58px;
+        padding: 10px 0;
         display: grid;
         grid-template-columns: auto 1fr;
         align-items: center;
-        gap: 10px;
+        gap: 14px;
         flex-wrap: nowrap;
       }
 
       .brand {
         width: auto;
         justify-content: flex-start;
-        gap: 6px;
-        font-size: 12px;
-        letter-spacing: 0.2px;
+        gap: 8px;
+        font-size: 15px;
+        letter-spacing: 0.3px;
         white-space: nowrap;
       }
 
       .brand-badge {
-        width: 26px;
-        height: 26px;
-        font-size: 13px;
-        border-radius: 8px;
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+        border-radius: 10px;
       }
 
       .nav-links {
@@ -969,12 +970,16 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        gap: 8px;
+        gap: 14px;
         flex-wrap: nowrap;
         overflow-x: auto;
         scrollbar-width: none;
         -ms-overflow-style: none;
         white-space: nowrap;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.08);
       }
 
       .nav-links::-webkit-scrollbar {
@@ -986,14 +991,16 @@
       }
 
       .nav-links a {
-        font-size: 11px;
+        font-size: 12px;
+        font-weight: 600;
         line-height: 1;
+        color: #ececf2;
         padding: 2px 0;
       }
 
       .nav-links a::after {
-        bottom: -3px;
-        height: 1.5px;
+        bottom: -4px;
+        height: 2px;
       }
 
       .nav-cta {
