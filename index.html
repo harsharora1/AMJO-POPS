@@ -940,67 +940,64 @@
       }
 
       .nav-wrap {
-        min-height: 58px;
-        padding: 10px 0;
+        min-height: auto;
+        padding: 12px 0 14px;
         display: grid;
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        gap: 14px;
-        flex-wrap: nowrap;
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
 
       .brand {
-        width: auto;
-        justify-content: flex-start;
-        gap: 8px;
-        font-size: 15px;
+        width: 100%;
+        justify-content: center;
+        gap: 9px;
+        font-size: 17px;
         letter-spacing: 0.3px;
-        white-space: nowrap;
       }
 
       .brand-badge {
-        width: 30px;
-        height: 30px;
-        font-size: 15px;
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
         border-radius: 10px;
       }
 
       .nav-links {
         width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 14px;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        white-space: nowrap;
-        padding: 6px 10px;
-        border-radius: 999px;
-        background: rgba(255,255,255,0.06);
-        border: 1px solid rgba(255,255,255,0.08);
-      }
-
-      .nav-links::-webkit-scrollbar {
-        display: none;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        padding: 0;
       }
 
       .nav-links li {
-        flex: 0 0 auto;
+        width: 100%;
       }
 
       .nav-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 8px 10px;
         font-size: 12px;
         font-weight: 600;
-        line-height: 1;
+        text-align: center;
+        line-height: 1.2;
         color: #ececf2;
-        padding: 2px 0;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px;
       }
 
       .nav-links a::after {
-        bottom: -4px;
-        height: 2px;
+        display: none;
+      }
+
+      .nav-links a.active {
+        background: rgba(255, 207, 51, 0.12);
+        border-color: rgba(255, 207, 51, 0.35);
+        color: #fff5cc;
       }
 
       .nav-cta {
