@@ -6,7 +6,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   />
-  <title>AMJO POPS | Flavoured Popcorn</title>
+  <title>AMJO POPS | Flavoured Seasoning Pops</title>
   <meta
     name="description"
     content="AMJO POPS brings bold, tasty, flavoured popcorn in exciting varieties like Butter Cheese, Chilli Garlic, Cream & Onion, Khata Mitha, Pudina and Peri Peri."
@@ -21,23 +21,22 @@
   <style>
     :root {
       --bg: #0b0b0e;
-      --bg-soft: #111116;
-      --panel: rgba(255, 255, 255, 0.06);
-      --panel-strong: rgba(255, 255, 255, 0.09);
-      --border: rgba(255, 255, 255, 0.10);
+      --bg-soft: #121218;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-strong: rgba(255, 255, 255, 0.08);
       --text: #ffffff;
-      --muted: #b9b9c4;
+      --muted: #bfc0c8;
+      --line: rgba(255, 255, 255, 0.1);
       --yellow: #ffcf33;
       --orange: #ff7a18;
-      --dark: #111111;
-      --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.22);
-      --shadow-card: 0 14px 32px rgba(0, 0, 0, 0.24);
-      --radius-xl: 28px;
-      --radius-lg: 22px;
-      --radius-md: 18px;
+      --shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+      --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.3);
+      --radius: 28px;
+      --radius-sm: 18px;
       --max-width: 1280px;
-      --section-space: clamp(60px, 7vw, 110px);
-      --container-gap: clamp(16px, 3vw, 28px);
+      --section-space: clamp(64px, 8vw, 108px);
+      --container-gap: clamp(16px, 3.2vw, 30px);
+      --nav-height: 76px;
     }
 
     * {
@@ -56,16 +55,15 @@
       font-family: "Poppins", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(255, 122, 24, 0.10), transparent 22%),
-        radial-gradient(circle at top right, rgba(255, 207, 51, 0.08), transparent 20%),
-        linear-gradient(180deg, #09090b 0%, #0e0e12 100%);
+        radial-gradient(circle at top left, rgba(255, 122, 24, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 207, 51, 0.1), transparent 24%),
+        linear-gradient(180deg, #09090b 0%, #0d0d12 100%);
       overflow-x: hidden;
     }
 
     img {
       display: block;
       max-width: 100%;
-      height: auto;
     }
 
     a {
@@ -87,69 +85,127 @@
     .section {
       padding: var(--section-space) 0;
       content-visibility: auto;
-      contain-intrinsic-size: 700px;
+      contain-intrinsic-size: 1px 900px;
     }
 
-    .section-head {
+    .section-heading {
       max-width: 760px;
-      margin: 0 auto 40px;
+      margin: 0 auto 42px;
       text-align: center;
     }
 
     .section-title {
-      font-size: clamp(30px, 4vw, 52px);
-      line-height: 1.06;
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.08;
       font-weight: 800;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .section-subtitle {
       color: var(--muted);
       font-size: 16px;
-      line-height: 1.8;
+      line-height: 1.85;
     }
 
-    /* Navbar */
+    .surface {
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.04)
+      );
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #f4f4f6;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
+      color: #111;
+      box-shadow: 0 10px 20px rgba(255, 153, 0, 0.2);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 207, 51, 0.3);
+    }
+
+    /* NAVBAR */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(10, 10, 12, 0.88);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(10, 10, 13, 0.88);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     .nav-wrap {
-      min-height: 74px;
+      min-height: var(--nav-height);
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
-      gap: 18px;
-      padding: 10px 0;
+      gap: 22px;
+      padding: 12px 0;
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-size: 20px;
       font-weight: 800;
+      font-size: 20px;
       letter-spacing: 0.4px;
-      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .brand-badge {
       width: 40px;
       height: 40px;
-      border-radius: 13px;
+      border-radius: 12px;
       display: grid;
       place-items: center;
       background: linear-gradient(135deg, var(--yellow), var(--orange));
-      color: var(--dark);
-      box-shadow: var(--shadow-soft);
+      color: #111;
+      box-shadow: var(--shadow);
       font-size: 18px;
-      flex-shrink: 0;
     }
 
     .nav-links {
@@ -157,8 +213,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
@@ -166,12 +222,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 15px;
-      border-radius: 999px;
+      min-height: 42px;
+      padding: 10px 14px;
+      color: #dddde4;
       font-size: 14px;
-      font-weight: 600;
-      color: #e6e6ed;
-      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+      font-weight: 500;
+      border-radius: 999px;
+      transition: color 0.25s ease, background 0.25s ease;
     }
 
     .nav-links a::after {
@@ -179,9 +236,9 @@
       position: absolute;
       left: 14px;
       right: 14px;
-      bottom: 5px;
+      bottom: 7px;
       height: 2px;
-      border-radius: 10px;
+      border-radius: 999px;
       background: linear-gradient(90deg, var(--yellow), var(--orange));
       transform: scaleX(0);
       transform-origin: center;
@@ -189,73 +246,26 @@
     }
 
     .nav-links a:hover,
-    .nav-links a:focus-visible,
-    .nav-links a.touch-active {
-      background: rgba(255, 255, 255, 0.07);
-      color: #fff6d7;
-      transform: translateY(-1px);
+    .nav-links a.active {
+      color: #fff6d8;
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .nav-links a:hover::after,
-    .nav-links a:focus-visible::after,
-    .nav-links a.touch-active::after,
     .nav-links a.active::after {
       transform: scaleX(1);
     }
 
-    .nav-links a.active {
-      background: rgba(255, 207, 51, 0.12);
-      color: #fff3c5;
-      border: 1px solid rgba(255, 207, 51, 0.18);
-    }
-
     .nav-cta {
       display: flex;
-      align-items: center;
       justify-content: flex-end;
     }
 
-    .btn {
-      border: 0;
-      cursor: pointer;
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-      will-change: transform;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--yellow), var(--orange));
-      color: var(--dark);
-      box-shadow: 0 12px 24px rgba(255, 153, 0, 0.20);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 28px rgba(255, 153, 0, 0.24);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.07);
-      color: var(--text);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.12);
-      transform: translateY(-2px);
-    }
-
-    /* Hero */
+    /* HERO */
     .hero {
-      padding: 42px 0 30px;
+      padding: 28px 0 18px;
       position: relative;
-      overflow: hidden;
+      overflow: clip;
     }
 
     .hero::before {
@@ -264,45 +274,42 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 15% 18%, rgba(255, 207, 51, 0.12), transparent 22%),
-        radial-gradient(circle at 85% 18%, rgba(255, 122, 24, 0.15), transparent 24%);
+        radial-gradient(circle at 18% 20%, rgba(255, 207, 51, 0.16), transparent 23%),
+        radial-gradient(circle at 82% 12%, rgba(255, 122, 24, 0.18), transparent 24%);
     }
 
     .hero-grid {
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.03fr 0.97fr;
-      gap: clamp(24px, 4vw, 50px);
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
       align-items: center;
-    }
-
-    .hero-content {
-      max-width: 700px;
+      gap: clamp(26px, 4vw, 56px);
     }
 
     .hero-tag {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
+      gap: 8px;
+      padding: 9px 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      color: #f5f5f6;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #f5f5f7;
       font-size: 13px;
       margin-bottom: 18px;
     }
 
     .hero h1 {
-      font-size: clamp(38px, 6vw, 78px);
+      font-size: clamp(42px, 6vw, 82px);
       line-height: 1.02;
       font-weight: 800;
       margin-bottom: 16px;
+      max-width: 760px;
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #fff1a8, var(--yellow), var(--orange));
+      background: linear-gradient(135deg, #fff1a6, #ffcf33, #ff7a18);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -310,43 +317,43 @@
     }
 
     .hero p {
+      max-width: 720px;
       color: var(--muted);
       font-size: 16px;
       line-height: 1.9;
-      margin-bottom: 26px;
+      margin-bottom: 28px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
       margin-bottom: 28px;
     }
 
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      gap: 16px;
     }
 
     .stat-box {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 20px;
       border-radius: 22px;
-      padding: 18px;
-      box-shadow: var(--shadow-soft);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
     }
 
     .stat-box h3 {
       font-size: 26px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .stat-box p {
-      font-size: 13px;
       color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 0;
+      font-size: 13px;
+      line-height: 1.65;
     }
 
     .hero-visual {
@@ -354,127 +361,114 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 560px;
+      min-height: 580px;
     }
 
-    .hero-glow {
+    .hero-circle {
       position: absolute;
-      width: 500px;
-      height: 500px;
+      width: min(78vw, 580px);
+      aspect-ratio: 1 / 1;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 207, 51, 0.24), rgba(255, 122, 24, 0.12), transparent 70%);
-      filter: blur(14px);
-      opacity: 0.95;
+      background: radial-gradient(
+        circle,
+        rgba(255, 207, 51, 0.24),
+        rgba(255, 122, 24, 0.1),
+        transparent 72%
+      );
+      filter: blur(16px);
     }
 
-    .hero-frame {
-      width: min(100%, 560px);
-      padding: 14px;
-      border-radius: 34px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.11), rgba(255,255,255,0.05));
-      border: 1px solid rgba(255,255,255,0.11);
-      box-shadow: var(--shadow-card);
-      overflow: hidden;
+    .jar-card {
       position: relative;
-      z-index: 1;
+      width: min(100%, 600px);
+      padding: 16px;
+      border-radius: 34px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.12),
+        rgba(255, 255, 255, 0.05)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .jar-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 42%);
     }
 
     .hero-product {
-      min-height: 520px;
-      border-radius: 26px;
+      position: relative;
       display: grid;
       place-items: center;
-      background:
-        radial-gradient(circle at top, rgba(255, 207, 51, 0.10), transparent 30%),
-        linear-gradient(135deg, #231506 0%, #392208 40%, #131317 100%);
-      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
       overflow: hidden;
+      background:
+        radial-gradient(circle at top, rgba(255, 207, 51, 0.14), transparent 30%),
+        linear-gradient(135deg, #231506 0%, #392208 40%, #111015 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .hero-product img {
+    .product-emoji {
+      position: relative;
+      z-index: 1;
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      filter: drop-shadow(0 20px 28px rgba(0,0,0,0.30));
     }
 
-    /* Flavours */
+    .product-emoji img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.35));
+    }
+
+    /* FLAVOURS */
     .flavour-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
+      gap: 26px;
     }
 
     .card {
-      display: flex;
-      flex-direction: column;
       height: 100%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: var(--radius-xl);
       overflow: hidden;
-      box-shadow: var(--shadow-card);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255, 207, 51, 0.28);
-      box-shadow: 0 18px 34px rgba(0,0,0,0.28);
+      transform: translateY(-6px);
+      border-color: rgba(255, 207, 51, 0.35);
     }
 
     .card-media {
-      aspect-ratio: 4 / 3;
-      background: linear-gradient(135deg, #18181d, #22222a);
-      overflow: hidden;
+      background: rgba(255, 255, 255, 0.03);
     }
 
     .card-media img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.35s ease;
-    }
-
-    .card:hover .card-media img {
-      transform: scale(1.03);
+      height: auto;
     }
 
     .card-body {
       padding: 22px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 12px;
-      margin-bottom: 12px;
     }
 
     .card h3 {
       font-size: 24px;
-      margin-bottom: 8px;
+      margin: 12px 0 8px;
     }
 
     .card p {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.75;
+      line-height: 1.8;
       margin-bottom: 18px;
     }
 
     .card-footer {
-      margin-top: auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -488,50 +482,11 @@
       color: #fff;
     }
 
-    .card-footer .btn-secondary {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.16);
-    }
-
-    .card-footer .btn-secondary::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255, 207, 51, 0.20), rgba(255, 122, 24, 0.14));
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .card-footer .btn-secondary span,
-    .card-footer .btn-secondary {
-      position: relative;
-      z-index: 1;
-    }
-
-    .card-footer .btn-secondary:hover,
-    .card-footer .btn-secondary:focus-visible,
-    .card-footer .btn-secondary.touch-active {
-      color: #fff8df;
-      border-color: rgba(255, 207, 51, 0.40);
-      background: rgba(255,255,255,0.12);
-      transform: translateY(-2px);
-      box-shadow: 0 14px 24px rgba(255, 153, 0, 0.14);
-    }
-
-    .card-footer .btn-secondary:hover::before,
-    .card-footer .btn-secondary:focus-visible::before,
-    .card-footer .btn-secondary.touch-active::before {
-      opacity: 1;
-    }
-
-    /* About */
+    /* ABOUT */
     .about-wrap {
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 24px;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 28px;
       align-items: stretch;
     }
 
@@ -540,66 +495,74 @@
     .feature-box,
     .testimonial,
     .contact-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-card);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.04)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
     .about-card {
-      padding: 28px;
-      height: 100%;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      min-width: 0;
     }
 
-    .about-card h2,
-    .contact-card h2 {
-      font-size: clamp(30px, 4vw, 48px);
-      line-height: 1.1;
+    .about-card h2 {
+      font-size: clamp(30px, 4vw, 50px);
       margin-bottom: 14px;
+      line-height: 1.08;
     }
 
-    .about-card p,
-    .about-content p,
-    .contact-card > p {
+    .about-card > p,
+    .about-content p {
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.85;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .about-card > p {
+      margin-bottom: 20px;
     }
 
     .about-visual {
-      margin-top: 20px;
-      border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(135deg, #16161a, #22232a);
-      min-height: 360px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #151518, #23232b);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .about-visual img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
     }
 
     .about-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      min-width: 0;
     }
 
     .about-content p + p {
-      margin-top: 14px;
+      margin-top: 16px;
     }
 
     .mini-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 22px;
+      gap: 18px;
+      margin-top: 24px;
     }
 
     .info-card {
-      padding: 20px;
+      padding: 22px;
     }
 
     .info-card h4 {
@@ -610,36 +573,36 @@
     .info-card p {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
-    /* Features */
+    /* FEATURES */
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
+      gap: 22px;
     }
 
     .feature-box {
-      padding: 24px;
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      padding: 26px;
+      transition: transform 0.28s ease, border-color 0.28s ease;
     }
 
     .feature-box:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 207, 51, 0.24);
+      transform: translateY(-5px);
+      border-color: rgba(255, 207, 51, 0.32);
     }
 
     .feature-icon {
-      width: 56px;
-      height: 56px;
+      width: 58px;
+      height: 58px;
       border-radius: 18px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, var(--yellow), var(--orange));
-      color: var(--dark);
-      font-size: 24px;
       margin-bottom: 16px;
+      font-size: 25px;
+      color: #111;
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
     }
 
     .feature-box h3 {
@@ -650,14 +613,14 @@
     .feature-box p {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.75;
+      line-height: 1.78;
     }
 
-    /* Testimonials */
+    /* TESTIMONIALS */
     .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 22px;
     }
 
     .testimonial {
@@ -665,15 +628,15 @@
     }
 
     .stars {
-      font-size: 18px;
       letter-spacing: 2px;
       margin-bottom: 12px;
+      font-size: 18px;
     }
 
     .testimonial p {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.85;
+      line-height: 1.82;
       margin-bottom: 16px;
     }
 
@@ -684,52 +647,65 @@
     }
 
     .avatar {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, var(--yellow), var(--orange));
-      color: var(--dark);
       font-weight: 700;
+      color: #111;
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
       flex-shrink: 0;
     }
 
     .customer h4 {
-      font-size: 15px;
+      font-size: 16px;
       margin-bottom: 2px;
     }
 
     .customer span {
-      font-size: 13px;
       color: var(--muted);
+      font-size: 13px;
     }
 
-    /* Contact */
+    /* CONTACT */
     .contact-wrap {
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 22px;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 28px;
     }
 
     .contact-card {
-      padding: 28px;
+      padding: 30px;
+      min-width: 0;
+    }
+
+    .contact-card h2 {
+      font-size: clamp(30px, 4vw, 50px);
+      margin-bottom: 14px;
+      line-height: 1.08;
+    }
+
+    .contact-card > p {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 16px;
     }
 
     .contact-list {
       display: grid;
-      gap: 14px;
-      margin-top: 22px;
+      gap: 16px;
+      margin-top: 24px;
     }
 
     .contact-item {
       display: flex;
       gap: 14px;
       align-items: flex-start;
-      padding: 15px;
+      padding: 16px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .contact-item-icon {
@@ -738,10 +714,10 @@
       border-radius: 14px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, var(--yellow), var(--orange));
-      color: var(--dark);
-      font-size: 18px;
       flex-shrink: 0;
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
+      color: #111;
+      font-size: 18px;
     }
 
     .contact-item h4 {
@@ -760,7 +736,7 @@
     .contact-form {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 16px;
     }
 
     .field,
@@ -776,26 +752,27 @@
 
     label {
       font-size: 14px;
+      color: #f2f2f2;
       font-weight: 500;
-      color: #f1f1f1;
     }
 
     input,
     textarea {
       width: 100%;
+      padding: 15px 16px;
       border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
       color: #fff;
-      padding: 14px 16px;
       outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     }
 
     input:focus,
     textarea:focus {
-      border-color: rgba(255, 207, 51, 0.65);
+      border-color: rgba(255, 207, 51, 0.7);
       box-shadow: 0 0 0 4px rgba(255, 207, 51, 0.08);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     textarea {
@@ -803,19 +780,19 @@
       resize: vertical;
     }
 
-    /* Footer */
+    /* FOOTER */
     .footer {
-      padding: 28px 0 34px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      background: rgba(0,0,0,0.16);
+      padding: 28px 0 36px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.16);
     }
 
     .footer-wrap {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 18px;
       flex-wrap: wrap;
-      gap: 14px;
     }
 
     .footer p,
@@ -827,34 +804,39 @@
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 18px;
+    }
+
+    .footer-links a:hover {
+      color: #fff3c7;
     }
 
     .whatsapp-float {
       position: fixed;
       right: 18px;
       bottom: 18px;
-      z-index: 1000;
-      width: 56px;
-      height: 56px;
+      z-index: 999;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, #25d366, #16a34a);
       color: #fff;
-      font-size: 26px;
-      box-shadow: 0 12px 24px rgba(21, 163, 74, 0.26);
-      transition: transform 0.2s ease;
+      font-size: 28px;
+      background: linear-gradient(135deg, #25d366, #15a34a);
+      box-shadow: 0 14px 28px rgba(21, 163, 74, 0.3);
+      transition: transform 0.25s ease;
     }
 
     .whatsapp-float:hover {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
+    /* reveal */
     .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .reveal.show {
@@ -862,6 +844,25 @@
       transform: translateY(0);
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal,
+      .reveal.show,
+      .btn,
+      .card,
+      .feature-box,
+      .whatsapp-float,
+      .nav-links a {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+
+    /* TABLET */
     @media (max-width: 1180px) {
       .hero-grid,
       .about-wrap,
@@ -869,8 +870,13 @@
         grid-template-columns: 1fr;
       }
 
-      .flavour-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .hero h1,
+      .hero p {
+        max-width: 100%;
+      }
+
+      .hero-visual {
+        min-height: unset;
       }
 
       .feature-grid {
@@ -881,41 +887,95 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .hero-content {
-        max-width: 100%;
-      }
-
-      .hero-visual {
-        min-height: 460px;
+      .flavour-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 760px) {
+    /* MOBILE */
+    @media (max-width: 820px) {
+      :root {
+        --nav-height: auto;
+      }
+
+      .nav-wrap {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        justify-items: center;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        padding: 18px 0 8px;
+      }
+
+      .hero-grid {
+        gap: 18px;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-stats,
+      .flavour-grid,
+      .testimonial-grid,
+      .feature-grid,
+      .mini-grid,
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      body {
+        background:
+          radial-gradient(circle at top left, rgba(255, 122, 24, 0.12), transparent 32%),
+          linear-gradient(180deg, #09090b 0%, #0d0d12 100%);
+      }
+
       .navbar {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
       }
 
       .nav-wrap {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        gap: 12px;
-        min-height: auto;
         padding: 12px 0 14px;
       }
 
       .brand {
-        font-size: 18px;
+        font-size: 17px;
+        gap: 9px;
       }
 
       .brand-badge {
         width: 34px;
         height: 34px;
         font-size: 16px;
+        border-radius: 10px;
       }
 
       .nav-links {
-        width: 100%;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 10px;
@@ -930,125 +990,65 @@
         min-height: 40px;
         padding: 8px 10px;
         font-size: 12px;
+        font-weight: 600;
         text-align: center;
-        background: rgba(255,255,255,0.06);
-        border: 1px solid rgba(255,255,255,0.08);
+        line-height: 1.2;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
 
-      .nav-cta {
-        display: none;
+      .nav-links a::after {
+        left: 10px;
+        right: 10px;
+        bottom: 5px;
       }
 
-      .hero {
-        padding: 24px 0 14px;
-      }
-
-      .hero-grid {
-        gap: 18px;
-      }
-
-      .hero-visual {
-        order: -1;
-        min-height: auto;
+      .hero-tag {
+        font-size: 12px;
+        padding: 8px 12px;
+        margin-bottom: 14px;
       }
 
       .hero h1 {
-        font-size: 35px;
+        font-size: 34px;
       }
 
       .hero p {
         font-size: 15px;
       }
 
-      .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero-stats,
-      .flavour-grid,
-      .feature-grid,
-      .testimonial-grid,
-      .contact-form,
-      .mini-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-glow {
+      .hero-circle {
         width: 320px;
-        height: 320px;
-        filter: blur(8px);
       }
 
-      .hero-frame {
+      .jar-card {
         padding: 10px;
-        border-radius: 26px;
+        border-radius: 24px;
       }
 
       .hero-product {
-        min-height: 360px;
-        border-radius: 22px;
+        border-radius: 20px;
       }
 
+      .section-title {
+        font-size: 30px;
+      }
+
+      .card-body,
       .about-card,
-      .contact-card,
       .feature-box,
       .testimonial,
+      .contact-card,
       .info-card {
         padding: 20px;
       }
 
-      .about-visual {
-        min-height: 240px;
-      }
-
-      .card-body {
-        padding: 18px;
-      }
-
-      .card-footer {
-        align-items: stretch;
-      }
-
-      .card-footer .btn-secondary {
-        width: 100%;
-      }
-
-      .section {
-        padding: 64px 0;
-      }
-
-      .section-head {
-        margin-bottom: 30px;
-      }
-
-      .section-subtitle {
-        font-size: 15px;
-      }
-
       .whatsapp-float {
-        width: 52px;
-        height: 52px;
-        font-size: 24px;
-      }
-    }
-
-    @media (hover: none) and (pointer: coarse) {
-      .nav-links a.touch-active::after,
-      .nav-links a:active::after {
-        transform: scaleX(1);
-      }
-
-      .card-footer .btn-secondary.touch-active,
-      .card-footer .btn-secondary:active {
-        color: #fff8df;
-        border-color: rgba(255, 207, 51, 0.44);
-        background: rgba(255,255,255,0.12);
-      }
-
-      .card-footer .btn-secondary.touch-active::before,
-      .card-footer .btn-secondary:active::before {
-        opacity: 1;
+        width: 54px;
+        height: 54px;
+        font-size: 25px;
+        right: 14px;
+        bottom: 14px;
       }
     }
   </style>
@@ -1056,7 +1056,7 @@
 <body>
   <header class="navbar">
     <div class="container nav-wrap">
-      <a href="#home" class="brand">
+      <a href="#home" class="brand" aria-label="AMJO POPS Home">
         <span class="brand-badge">🍿</span>
         <span>AMJO POPS</span>
       </a>
@@ -1088,10 +1088,12 @@
       <div class="container hero-grid">
         <div class="hero-content reveal show">
           <div class="hero-tag">✨ Crunch ka naya level • Taste jo yaad rahe</div>
+
           <h1>
             Flavour Loaded <span class="gradient-text">Popcorn</span><br />
             For Every Craving
           </h1>
+
           <p>
             Welcome to <strong>AMJO POPS</strong> — jahan milta hai crispy popcorn
             with bold seasonings, irresistible taste, and premium snacking vibes.
@@ -1120,18 +1122,18 @@
         </div>
 
         <div class="hero-visual reveal show">
-          <div class="hero-glow"></div>
-          <div class="hero-frame">
+          <div class="hero-circle"></div>
+          <div class="jar-card">
             <div class="hero-product">
-              <img
-                src="img.png/hero7.png"
-                alt="AMJO POPS Hero Jar"
-                width="900"
-                height="900"
-                fetchpriority="high"
-                loading="eager"
-                decoding="async"
-              />
+              <div class="product-emoji">
+                <img
+                  src="img.png/hero7.png"
+                  alt="AMJO POPS Hero Jar"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -1140,24 +1142,31 @@
 
     <section class="section" id="flavours">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-heading reveal">
           <h2 class="section-title">Our Signature Flavours</h2>
           <p class="section-subtitle">
-            Har flavour apni alag personality ke saath. Chahe aapko cheesy pasand
-            ho, spicy ho, tangy ho ya minty freshness — AMJO POPS has something
-            for everyone.
+            Har flavour apni alag personality ke saath. Chahe aapko cheesy pasand ho,
+            spicy ho, tangy ho ya minty freshness — AMJO POPS has something for everyone.
           </p>
         </div>
 
         <div class="flavour-grid">
-          <article class="card reveal">
+          <article class="card surface reveal">
             <div class="card-media">
-              <img src="img.png/hero1.png" alt="Butter Cheese" width="600" height="450" loading="lazy" decoding="async" />
+              <img
+                src="img.png/hero1.png"
+                alt="Butter Cheese"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="card-body">
               <span class="pill">Creamy • Buttery</span>
               <h3>Butter Cheese</h3>
-              <p>Rich buttery goodness with cheesy flavour in every bite. Perfect for family snacking and binge-watch cravings.</p>
+              <p>
+                Rich buttery goodness with cheesy flavour in every bite.
+                Perfect for family snacking and binge-watch cravings.
+              </p>
               <div class="card-footer">
                 <span class="price">Best Seller</span>
                 <a href="#contact" class="btn btn-secondary">Order Now</a>
@@ -1165,14 +1174,22 @@
             </div>
           </article>
 
-          <article class="card reveal">
+          <article class="card surface reveal">
             <div class="card-media">
-              <img src="img.png/hero3.png" alt="Chilli Garlic" width="600" height="450" loading="lazy" decoding="async" />
+              <img
+                src="img.png/hero3.png"
+                alt="Chilli Garlic"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="card-body">
               <span class="pill">Hot • Bold</span>
               <h3>Chilli Garlic</h3>
-              <p>Spicy chilli with a bold garlic punch. A fiery popcorn experience for those who love strong flavour and desi spice.</p>
+              <p>
+                Spicy chilli with a bold garlic punch. A fiery popcorn experience
+                for those who love strong flavour and desi spice.
+              </p>
               <div class="card-footer">
                 <span class="price">Spicy Pick</span>
                 <a href="#contact" class="btn btn-secondary">Order Now</a>
@@ -1180,14 +1197,22 @@
             </div>
           </article>
 
-          <article class="card reveal">
+          <article class="card surface reveal">
             <div class="card-media">
-              <img src="img.png/hero2.png" alt="Cream & Onion" width="600" height="450" loading="lazy" decoding="async" />
+              <img
+                src="img.png/hero2.png"
+                alt="Cream & Onion"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="card-body">
               <span class="pill">Smooth • Savoury</span>
               <h3>Cream & Onion</h3>
-              <p>Creamy and smooth flavour with a mild onion twist, light tanginess ke saath. Perfectly balanced taste jo sabko pasand aaye.</p>
+              <p>
+                Creamy and smooth flavour with a mild onion twist, light tanginess
+                ke saath. Perfectly balanced taste jo sabko pasand aaye.
+              </p>
               <div class="card-footer">
                 <span class="price">Classic Choice</span>
                 <a href="#contact" class="btn btn-secondary">Order Now</a>
@@ -1195,14 +1220,22 @@
             </div>
           </article>
 
-          <article class="card reveal">
+          <article class="card surface reveal">
             <div class="card-media">
-              <img src="img.png/hero4.png" alt="Khata Mitha" width="600" height="450" loading="lazy" decoding="async" />
+              <img
+                src="img.png/hero4.png"
+                alt="Khata Mitha"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="card-body">
               <span class="pill">Sweet • Tangy</span>
               <h3>Khata Mitha</h3>
-              <p>Perfect mix of sweet and tangy flavours. Fun, chatpata and full of surprise in every crunchy bite.</p>
+              <p>
+                Perfect mix of sweet and tangy flavours. Fun, chatpata and full of
+                surprise in every crunchy bite.
+              </p>
               <div class="card-footer">
                 <span class="price">Fun Flavour</span>
                 <a href="#contact" class="btn btn-secondary">Order Now</a>
@@ -1210,14 +1243,22 @@
             </div>
           </article>
 
-          <article class="card reveal">
+          <article class="card surface reveal">
             <div class="card-media">
-              <img src="img.png/hero5.png" alt="Pudina" width="600" height="450" loading="lazy" decoding="async" />
+              <img
+                src="img.png/hero5.png"
+                alt="Pudina"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="card-body">
               <span class="pill">Fresh • Cool</span>
               <h3>Pudina</h3>
-              <p>Fresh minty flavour with a cool and refreshing finish. Light, exciting and perfect for all-day snacking.</p>
+              <p>
+                Fresh minty flavour with a cool and refreshing finish. Light,
+                exciting and perfect for all-day snacking.
+              </p>
               <div class="card-footer">
                 <span class="price">Fresh Pick</span>
                 <a href="#contact" class="btn btn-secondary">Order Now</a>
@@ -1225,14 +1266,22 @@
             </div>
           </article>
 
-          <article class="card reveal">
+          <article class="card surface reveal">
             <div class="card-media">
-              <img src="img.png/hero6.png" alt="Peri Peri" width="600" height="450" loading="lazy" decoding="async" />
+              <img
+                src="img.png/hero6.png"
+                alt="Peri Peri"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="card-body">
               <span class="pill">Zesty • Spicy</span>
               <h3>Peri Peri</h3>
-              <p>Bold spicy peri peri seasoning for extra kick. Trendy flavour jo youngsters aur spice lovers dono ko pasand aaye.</p>
+              <p>
+                Bold spicy peri peri seasoning for extra kick. Trendy flavour jo
+                youngsters aur spice lovers dono ko pasand aaye.
+              </p>
               <div class="card-footer">
                 <span class="price">Hot Favourite</span>
                 <a href="#contact" class="btn btn-secondary">Order Now</a>
@@ -1246,14 +1295,22 @@
     <section class="section" id="about">
       <div class="container about-wrap">
         <div class="about-card reveal">
-          <h2>Built For Modern Snacking</h2>
-          <p>
-            AMJO POPS sirf popcorn nahi, ek bold flavour experience hai. Hum focus
-            karte hain packaging, freshness aur memorable taste par taki har jar
-            premium lage aur repeat customers aayein.
-          </p>
+          <div>
+            <h2>Built For Modern Snacking</h2>
+            <p>
+              AMJO POPS sirf popcorn nahi, ek bold flavour experience hai.
+              Hum focus karte hain packaging, freshness aur memorable taste par
+              taki har jar premium lage aur repeat customers aayein.
+            </p>
+          </div>
+
           <div class="about-visual">
-            <img src="img.png/hero.png" alt="AMJO POPS" width="900" height="700" loading="lazy" decoding="async" />
+            <img
+              src="img.png/hero.png"
+              alt="AMJO POPS"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
 
@@ -1263,6 +1320,7 @@
             high-demand snack banana jo shops, gifting, parties aur personal
             cravings sabke liye fit ho.
           </p>
+
           <p>
             Attractive jars, eye-catching branding aur flavour variety ke saath
             <strong>AMJO POPS</strong> ek aisa product ban sakta hai jo shelf par
@@ -1272,19 +1330,27 @@
           <div class="mini-grid">
             <div class="info-card">
               <h4>Premium Packaging</h4>
-              <p>Stylish jars and appealing presentation that looks modern and gift-ready.</p>
+              <p>
+                Stylish jars and appealing presentation that looks modern and gift-ready.
+              </p>
             </div>
             <div class="info-card">
               <h4>Retail Friendly</h4>
-              <p>Easy to display, easy to sell, and suitable for stores, counters and kiosks.</p>
+              <p>
+                Easy to display, easy to sell, and suitable for stores, counters and kiosks.
+              </p>
             </div>
             <div class="info-card">
               <h4>Bulk Orders</h4>
-              <p>Events, parties, return gifts, festive hampers and business gifting options.</p>
+              <p>
+                Events, parties, return gifts, festive hampers and business gifting options.
+              </p>
             </div>
             <div class="info-card">
               <h4>Brand Identity</h4>
-              <p>Strong, memorable and youth-friendly snack branding with a premium vibe.</p>
+              <p>
+                Strong, memorable and youth-friendly snack branding with a premium vibe.
+              </p>
             </div>
           </div>
         </div>
@@ -1293,11 +1359,11 @@
 
     <section class="section" id="features">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-heading reveal">
           <h2 class="section-title">Why People Choose AMJO POPS</h2>
           <p class="section-subtitle">
-            Taste, looks, freshness aur variety — sab ek saath. Isi liye AMJO
-            POPS har age group aur har occasion ke liye perfect snack option hai.
+            Taste, looks, freshness aur variety — sab ek saath. Isi liye
+            AMJO POPS har age group aur har occasion ke liye perfect snack option hai.
           </p>
         </div>
 
@@ -1305,22 +1371,33 @@
           <div class="feature-box reveal">
             <div class="feature-icon">🍿</div>
             <h3>Fresh Crunch</h3>
-            <p>Har bite crispy aur satisfying feel de, isliye freshness aur texture par strong focus.</p>
+            <p>
+              Har bite crispy aur satisfying feel de, isliye freshness aur texture par strong focus.
+            </p>
           </div>
+
           <div class="feature-box reveal">
             <div class="feature-icon">🎨</div>
             <h3>Attractive Branding</h3>
-            <p>Packaging aur design aisa jo shelf par bhi standout kare aur online bhi premium lage.</p>
+            <p>
+              Packaging aur design aisa jo shelf par bhi standout kare aur online bhi premium lage.
+            </p>
           </div>
+
           <div class="feature-box reveal">
             <div class="feature-icon">🌶️</div>
             <h3>Bold Flavours</h3>
-            <p>Mild se spicy tak options, taaki har customer ko apna favourite flavour mil sake.</p>
+            <p>
+              Mild se spicy tak options, taaki har customer ko apna favourite flavour mil sake.
+            </p>
           </div>
+
           <div class="feature-box reveal">
             <div class="feature-icon">🏪</div>
             <h3>Business Ready</h3>
-            <p>Retailers, resellers, cafes, counters aur gifting orders ke liye suitable product concept.</p>
+            <p>
+              Retailers, resellers, cafes, counters aur gifting orders ke liye suitable product concept.
+            </p>
           </div>
         </div>
       </div>
@@ -1328,7 +1405,7 @@
 
     <section class="section" id="testimonials">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-heading reveal">
           <h2 class="section-title">What Customers Say</h2>
           <p class="section-subtitle">
             Ye sample reviews section website ko trust aur premium feel deta hai.
@@ -1339,7 +1416,10 @@
         <div class="testimonial-grid">
           <div class="testimonial reveal">
             <div class="stars">★★★★★</div>
-            <p>Butter Cheese flavour genuinely addictive tha. Packaging bhi kaafi premium lagi aur gift dene layak feel aaya.</p>
+            <p>
+              Butter Cheese flavour genuinely addictive tha. Packaging bhi kaafi
+              premium lagi aur gift dene layak feel aaya.
+            </p>
             <div class="customer">
               <div class="avatar">R</div>
               <div>
@@ -1351,7 +1431,10 @@
 
           <div class="testimonial reveal">
             <div class="stars">★★★★★</div>
-            <p>Peri Peri aur Chilli Garlic dono flavours mast the. Movie night ke liye perfect snack hai.</p>
+            <p>
+              Peri Peri aur Chilli Garlic dono flavours mast the. Movie night ke
+              liye perfect snack hai.
+            </p>
             <div class="customer">
               <div class="avatar">A</div>
               <div>
@@ -1363,7 +1446,10 @@
 
           <div class="testimonial reveal">
             <div class="stars">★★★★★</div>
-            <p>Khata Mitha flavour alag aur interesting tha. Kids aur adults dono ko pasand aaya. Jar bhi kaafi achha tha.</p>
+            <p>
+              Khata Mitha flavour alag aur interesting tha. Kids aur adults dono ko
+              pasand aaya. Jar bhi kaafi achha tha.
+            </p>
             <div class="customer">
               <div class="avatar">S</div>
               <div>
@@ -1381,9 +1467,8 @@
         <div class="contact-card reveal">
           <h2>Contact AMJO POPS</h2>
           <p>
-            Retail order, dealership, collaboration ya bulk enquiry ke liye
-            contact karo. Neeche apni details update karke website ko live use
-            kar sakte ho.
+            Retail order, dealership, collaboration ya bulk enquiry ke liye contact karo.
+            Neeche apni details update karke website ko live use kar sakte ho.
           </p>
 
           <div class="contact-list">
@@ -1440,7 +1525,9 @@
             </div>
 
             <div class="field-full">
-              <button class="btn btn-primary" type="submit">Send Enquiry on WhatsApp</button>
+              <button class="btn btn-primary" type="submit">
+                Send Enquiry on WhatsApp
+              </button>
             </div>
           </form>
         </div>
@@ -1451,6 +1538,7 @@
   <footer class="footer">
     <div class="container footer-wrap">
       <p>© 2026 AMJO POPS. All rights reserved.</p>
+
       <div class="footer-links">
         <a href="#home">Home</a>
         <a href="#flavours">Flavours</a>
@@ -1466,7 +1554,9 @@
     target="_blank"
     rel="noopener"
     aria-label="Chat on WhatsApp"
-  >💬</a>
+  >
+    💬
+  </a>
 
   <script>
     function sendToWhatsApp(event) {
@@ -1478,70 +1568,67 @@
       const message = document.getElementById("message").value.trim();
 
       const text =
-        `Hi AMJO POPS,%0A%0AMy name is ${encodeURIComponent(name)}.` +
-        `%0APhone: ${encodeURIComponent(phone)}` +
-        `%0AEmail: ${encodeURIComponent(email || "Not provided")}` +
-        `%0A%0AMessage:%0A${encodeURIComponent(message)}`;
+        `Hi AMJO POPS,%0A%0A` +
+        `My name is ${encodeURIComponent(name)}.%0A` +
+        `Phone: ${encodeURIComponent(phone)}%0A` +
+        `Email: ${encodeURIComponent(email || "Not provided")}%0A%0A` +
+        `Message:%0A${encodeURIComponent(message)}`;
 
       window.open(`https://wa.me/919999999999?text=${text}`, "_blank");
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+    const revealItems = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
 
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    revealItems.forEach((item) => observer.observe(item));
 
     const sections = document.querySelectorAll("section[id]");
-    const navItems = document.querySelectorAll(".nav-links a");
+    const navLinks = document.querySelectorAll(".nav-links a");
 
-    function updateActiveLink() {
-      let current = "home";
+    let ticking = false;
+
+    function updateActiveNav() {
+      let currentId = "home";
+      const offset = 140;
 
       sections.forEach((section) => {
-        const top = section.offsetTop - 130;
-        const height = section.offsetHeight;
-        if (window.scrollY >= top && window.scrollY < top + height) {
-          current = section.id;
+        const top = section.offsetTop - offset;
+        const bottom = top + section.offsetHeight;
+
+        if (window.scrollY >= top && window.scrollY < bottom) {
+          currentId = section.id;
         }
       });
 
-      navItems.forEach((link) => {
-        link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === `#${currentId}`);
       });
+
+      ticking = false;
     }
 
-    updateActiveLink();
-    window.addEventListener("scroll", updateActiveLink, { passive: true });
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateActiveNav);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
 
-    function addTouchFeedback(selector) {
-      document.querySelectorAll(selector).forEach((el) => {
-        let timer;
-
-        const activate = () => {
-          el.classList.add("touch-active");
-          clearTimeout(timer);
-        };
-
-        const deactivate = () => {
-          timer = setTimeout(() => {
-            el.classList.remove("touch-active");
-          }, 160);
-        };
-
-        el.addEventListener("touchstart", activate, { passive: true });
-        el.addEventListener("touchend", deactivate, { passive: true });
-        el.addEventListener("touchcancel", deactivate, { passive: true });
-      });
-    }
-
-    addTouchFeedback(".nav-links a");
-    addTouchFeedback(".card-footer .btn-secondary");
+    updateActiveNav();
   </script>
 </body>
 </html>
